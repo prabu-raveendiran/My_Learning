@@ -1,0 +1,20 @@
+import pandas as pd
+###mention the specific path to read the file#####
+os.chdir(r'C:\temp')
+###using pandas function to store the file value #########
+data = pd.read_csv('READOUT.csv')
+
+####if want to drop specific column to include the drop #####
+#data.drop(['dummy'],axis=1)
+
+#####insert the new column in large dataset at quick process######
+data.insert(loc=9,column='creative_version_id',value="NULL")
+data.insert(loc=11,column='placement_name',value="NULL")
+data.insert(loc=12,column='evt_placement_key',value="NULL")
+data.insert(loc=13,column='fb_adset_id',value="NULL")
+data.insert(loc=16,column='conversion_channel',value="NULL")
+
+###export the output data in new file####
+data.to_csv('READOUT_output.csv',index=False)
+###for QA to verify the output data###########
+print(data)
